@@ -12,7 +12,7 @@ rownames(pathway_expr) <- pathway_genes[[1]]
 colnames(pathway_expr) <- pathway_cells[[1]]
 
 pathway_expr <- as.matrix(pathway_expr)
-pathway_expr <- matr.filter(pathway_expr, min.cells = 50, min.genes = 600)
+pathway_expr <- matr.filter(pathway_expr, min.cells = 50, min.genes = 10)
 pathway_meta <- pathway_meta[pathway_meta$X %in% colnames(pathway_expr), ]
 
 rogue.pathway <- rogue(
