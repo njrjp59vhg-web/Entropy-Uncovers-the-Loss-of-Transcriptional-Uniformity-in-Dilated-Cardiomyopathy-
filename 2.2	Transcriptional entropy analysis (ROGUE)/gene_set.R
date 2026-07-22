@@ -9,40 +9,40 @@ control   = readRDS("/rds/general/user/ao225/home/CardiaFinal/Results/Science/Ro
 refset <- Reduce(union, list(chromatin$Gene, sarcomere$Gene,
                              splicing$Gene, PVneg$Gene, control$Gene))
 
-stable_chromatin <- chromatin %>%
+ds_chromatin <- chromatin %>%
   filter(p.adj < 0.05) %>%
   arrange(desc(ds)) %>%
   pull(Gene)
 
-stable_sarcomere <- sarcomere %>%
+ds_sarcomere <- sarcomere %>%
   filter(p.adj < 0.05) %>%
   arrange(desc(ds)) %>%
   pull(Gene)
 
-stable_splicing <- splicing %>%
+ds_splicing <- splicing %>%
   filter(p.adj < 0.05) %>%
   arrange(desc(ds)) %>%
   pull(Gene)
 
-stable_PVneg <- PVneg %>%
+ds_PVneg <- PVneg %>%
   filter(p.adj < 0.05) %>%
   arrange(desc(ds)) %>%
   pull(Gene)
 
-stable_control<- control %>%
+ds_control<- control %>%
   filter(p.adj < 0.05) %>%
   arrange(desc(ds)) %>%
   pull(Gene)
 
-sharedDCM <- Reduce(union, list(stable_chromatin, stable_sarcomere, stable_splicing, stable_PVneg))
-DCMonly   <- setdiff(sharedDCM, stable_control)
+sharedDCM <- Reduce(union, list(ds_chromatin, ds_sarcomere, ds_splicing, ds_PVneg))
+DCMonly   <- setdiff(sharedDCM, ds_control)
 
 writeLines(DCMonly, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/DCMonly.txt")
-writeLines(stable_chromatin, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/stable_chromatin.txt")
-writeLines(stable_sarcomere, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/stable_sarcomere.txt")
-writeLines(stable_splicing, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/stable_splicing.txt")
-writeLines(stable_PVneg, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/stable_PVneg.txt")
-writeLines(stable_control, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/stable_control.txt")
+writeLines(ds_chromatin, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/ds_chromatin.txt")
+writeLines(ds_sarcomere, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/ds_sarcomere.txt")
+writeLines(ds_splicing, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/ds_splicing.txt")
+writeLines(ds_PVneg, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/ds_PVneg.txt")
+writeLines(ds_control, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/ds_control.txt")
 writeLines(refset, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs/gene_set/refset.txt")
 
 dir <- "/rds/general/user/ao225/home/CardiaFinal/Results/Science/Rogue_outputs"
