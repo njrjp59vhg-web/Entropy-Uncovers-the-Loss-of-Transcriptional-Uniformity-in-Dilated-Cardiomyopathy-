@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -N scenic_aucell
+#PBS -o scenic_aucell.out
+#PBS -e scenic_aucell.err
+#PBS -m bea
+#PBS -M ao225@ic.ac.uk
+#PBS -l select=1:ncpus=26:mem=128gb
+#PBS -l walltime=12:00:00
+ 
+module load miniforge/3
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+conda activate ml_age
+ 
+RESULTS=/rds/general/user/ao225/home/CardiaFinal/Results/SCENIC/SCENIC_results
+LOOM=/rds/general/user/ao225/home/CardiaFinal/Results/SCENIC/Processed_files/lv_exp.loom
+REGULONS="$RESULTS/lv_regulons.dat"
+OUTPUT="$RESULTS/lv_auc_mtx.csv"
+ 
+echo "Job started: $(date)"
+echo "Running on: $(hostname)"
+ 
+# --- Step 1: derive regulons from the motifs table (fast, uses regulons.motifs.csv) ---
+echo "Deriving regulons..."
+python /rds/general/user/ao225/home/CardiaFinal/Code/Science/SCENIC_job/Step2.5.py
+ 
+
+ 
