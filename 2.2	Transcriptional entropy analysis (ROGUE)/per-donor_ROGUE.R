@@ -34,5 +34,5 @@ rogue.states <- rogue.states <- rogue(
 )
 
 saveRDS(rogue.pathway, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/rogue_pathway.rds")
-saveRDS(rogue.states, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/rogue_pathway.rds")
+saveRDS(rogue.states, "/rds/general/user/ao225/home/CardiaFinal/Results/Science/rogue_states.rds")
 
