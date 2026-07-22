@@ -14,7 +14,7 @@ expr <- as.matrix(expr)
 expr <- matr.filter(expr, min.cells = 50, min.genes = 10)
 
 ent = SE_fun(expr)
-saveRDS(ent,"/rds/general/user/ao225/home/ext/result/ent_sarcomere.rds")
+saveRDS(ent,"/rds/general/user/ao225/home/ext/result/ent_control.rds")
 
 expr <- readMM("/rds/general/user/ao225/home/ext/Science_variant/expr_sarcomere.mtx")
 cells <- read.csv("/rds/general/user/ao225/home/ext/Science_variant/cells_sarcomere.csv")
