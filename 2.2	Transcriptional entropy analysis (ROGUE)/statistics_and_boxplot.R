@@ -11,10 +11,10 @@ rp <- rogue.pathway |>
 
 lev <- c("control", "splicing", "sarcomere", "PVneg", "chromatin")
 rp$pathway <- factor(rp$pathway, levels = lev)
-print(table(rp$pathway))                       # donors per group
+print(table(rp$pathway))                      
 
 ## ---- stats ----
-kruskal.test(rogue ~ pathway, data = rp)        # omnibus
+kruskal.test(rogue ~ pathway, data = rp)      
 
 # each DCM group vs control (control is first level -> DCM<control is "greater")
 dcm <- setdiff(lev, "control")
